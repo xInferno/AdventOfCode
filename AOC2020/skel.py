@@ -3,8 +3,10 @@
 input_file = 'inputs/day1'
 
 def process(given):
-    print("process the input")
-    return
+    with open(given) as f:
+        infile = f.readlines()
+    #infile = [x.strip() for x in infile]
+    return infile
 
 def p1(given):
     print("part 1 TBD")
