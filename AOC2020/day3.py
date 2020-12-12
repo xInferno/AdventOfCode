@@ -49,6 +49,7 @@ def p2(given):
     a3 = slope(mapa, 1, 5)
     a4 = slope(mapa, 1, 7)
     a5 = slope(mapa, 2, 1)
+    print("{} {} {} {} {}".format(a1,a2,a3,a4,a5))
     print(a1*a2*a3*a4*a5)
 
 def main():

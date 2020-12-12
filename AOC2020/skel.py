@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
+import re
 
-input_file = 'inputs/day1'
+input_file = 'inputs/day4'
 
 def process(given):
     with open(given) as f:
         infile = f.readlines()
-    #infile = [x.strip() for x in infile]
+    infile = [x.strip() for x in infile]
     return infile
 
 def p1(given):
-    print("part 1 TBD")
+    print("Part 1 TBD")
     return
-
 def p2(given):
-    print("part 2 TBD")
+    print("Part 2 TBD")
     return
 
 def main():
     given = process(input_file)       
-    p1(given)
-    p2(given)
+    #p1(given)
+    #p2(given)
 
 if __name__ == '__main__':
     main()
