@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+import re
 
-input_file = 'inputs/day4'
+input_file = 'inputs/day$'
 
 def process(given):
     with open(given) as f:
