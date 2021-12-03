@@ -12,13 +12,8 @@ def solve(given, index, toggle):
     if len(given) == 1:
         return given
     else:
-        ones = []
-        zeroes = []
-        for x in given:
-            if x[index] == '1':
-                ones.append(x)
-            elif x[index] == '0':
-                zeroes.append(x)
+        ones = [x for x in given if x[index] == '1']
+        zeroes = [x for x in given if x[index] == '0']
         if toggle == 1: # searching for o2
             if len(ones) >= len(zeroes):
                 return solve(ones,index+1,1)
