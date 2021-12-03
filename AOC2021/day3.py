@@ -8,7 +8,7 @@ def process(given):
     infile = [x.strip() for x in infile]
     return infile
 
-def o2(given, index):
+def solve(given, index, toggle):
     if len(given) == 1:
         return given
     else:
@@ -19,27 +19,16 @@ def o2(given, index):
                 ones.append(x)
             elif x[index] == '0':
                 zeroes.append(x)
-        if len(ones) >= len(zeroes):
-            return o2(ones,index+1)
-        else:
-            return o2(zeroes,index+1)
-    
-def co2(given, index):
-    if len(given) == 1:
-        return given
-    else:
-        ones = []
-        zeroes = []
-        for x in given:
-            if x[index] == '1':
-                ones.append(x)
-            elif x[index] == '0':
-                zeroes.append(x)
-        if len(zeroes) <= len(ones):
-            return co2(zeroes,index+1)
-        else:
-            return co2(ones,index+1)
-
+        if toggle == 1: # searching for o2
+            if len(ones) >= len(zeroes):
+                return solve(ones,index+1,1)
+            else:
+                return solve(zeroes,index+1,1)
+        elif toggle == 0: # searching for co2
+            if len(zeroes) <= len(ones):
+                return solve(zeroes,index+1,0)
+            else:
+                return solve(ones,index+1,0)
 
 def p1(given):
     ones = [0] * len(given[0])
@@ -57,9 +46,10 @@ def p1(given):
             zstring += '1'
     print("{}".format(int(ostring,2)*int(zstring,2)))
     return
+
 def p2(given):
-    out1 = o2(given,0)[0]
-    out2 = co2(given,0)[0]
+    out1 = solve(given,0,1)[0]
+    out2 = solve(given,0,0)[0]
     print("{}".format(int(out1,2)*int(out2,2)))
     return
 
