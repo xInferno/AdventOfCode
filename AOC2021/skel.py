@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import re
 
 input_file = 'inputs/day$'
 
@@ -18,8 +17,8 @@ def p2(given):
 
 def main():
     given = process(input_file)       
-    #p1(given)
-    #p2(given)
+    p1(given)
+    p2(given)
 
 if __name__ == '__main__':
     main()
