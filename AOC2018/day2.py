@@ -12,31 +12,57 @@ def p1(given):
     answer = 0
     twice, thrice, found2, found3 = 0, 0, 0, 0
     for i in given:
-        print("==========Checking string ", i, "=========")
         for j in i:
-            print("Checking char ", j)
             if i.count(j) == 2:
-                print("Char",j,"found twice")
                 if found2:
-                    print("Already counted this or another character twice, continuing")
                     continue
                 else:
                     found2 = 1
                     twice += 1
             if i.count(j) == 3:
-                print("Char",j,"found three times")
                 if found3:
-                    print("Already counted this or another character three times, continuing")
+                    continue
                 else:
                     found3 = 1
                     thrice += 1
         found2, found3 = 0, 0
-    print("Twice: ", twice, ", thrice: ", thrice)
     print(twice * thrice)
     return
 def p2(given):
+    outer = 0
+    inner = outer + 1
+    while outer < len(given):
+        pos, err = 0, 0
+        # process inner lines
+        while inner < len(given):
+            if err > 1: # too many errors
+                err, pos = 0, 0
+                break
+            for i in range(0, len(given[outer])):
+                if err > 1: # too many errors
+                    err, pos = 0, 0
+                    break
+                if given[outer][i] != given[inner][i]:
+                    err += 1
+                    pos = i
+                if i == len(given[outer])-1:
+                    answer = ""
+                    for j in range(0, len(given[outer])):
+                        if j == pos: # skip the differing character
+                            continue
+                        else:
+                            answer += given[outer][j]
+                    print(answer)
+                    # hack my way out
+                    inner = 3000000
+                    outer = 3000000
+                    break
 
-    print("Part 2 TBD")
+            inner += 1
+        # end process inner lines
+        outer += 1
+        inner = outer + 1
+
     return
 
 def main():
