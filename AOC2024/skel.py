@@ -9,16 +9,14 @@ def process(given):
     return infile
 
 def p1(given):
-    print("Part 1 TBD")
-    return
+    return "TBD"
 def p2(given):
-    print("Part 2 TBD")
-    return
+    return "TBD"
 
 def main():
     given = process(input_file)       
-    p1(given)
-    p2(given)
+    print("P1: " + p1(given))
+    print("P2: " + p2(given))
 
 if __name__ == '__main__':
     main()
