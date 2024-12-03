@@ -9,59 +9,45 @@ def process(given):
     return infile
 
 def compare(x):
-        print()
         inc, dec, safe = False, False, True
         for i, y in enumerate(x):
             cur = int(x[i])
             if not i == len(x)-1:
                 nxt = int(x[i+1])
-                print ("Current element: " + str(cur) + ", next element: " + str(nxt))
             if i == 0: #first element
-                if abs(cur-nxt) > 3:
-                    print("REPORT UNSAFE - too large of a difference between numbers. Difference is: " + str(abs(cur-nxt)))
+                if abs(cur-nxt) > 3: # unsafe - too large of a difference between numbers
                     return 0
-                elif cur > nxt:
+                elif cur > nxt: # decrementing list
                     dec = True
-                    print("Setting list to decrement")
                     continue
-                elif cur < nxt:
+                elif cur < nxt: # incrementing list
                     inc = True
-                    print("Setting list to increment")
                     continue
-                else: # elements are the same, therefore unsafe by default
-                    print("UNSAFE ON FIRST ELEMENT")
+                else: # elements are the same, therefore unsafe
                     safe = False
                     return 0
             elif i == len(x)-1: # final element
-                print("Reached final element")
-                if (dec and safe) or (inc and safe):
-                    print("This report is safe!")
+                if (dec and safe) or (inc and safe): # huzzah!
                     return 1
             else: # processing needed
-                if abs(cur-nxt) > 3:
-                    print("REPORT UNSAFE - too large of a difference between numbers. Difference is: " + str(abs(cur-nxt)))
+                if abs(cur-nxt) > 3: # unsafe - too large of a difference between numbers
                     return 0
                 elif cur > nxt: # decrementing
                     if dec:
                         continue
-                    else:
-                        print("REPORT UNSAFE - started as decrement, found increment")
+                    else: # no longer decrementing, unsafe
                         safe = False
                         return 0
-                elif cur < nxt:
+                elif cur < nxt: # incrementing
                     if inc:
                         continue
-                    else:
-                        print("REPORT UNSAFE - started as increment, found decrement")
+                    else: # no longer incrementing, unsafe
                         safe = False
                         return 0
-                else:
-                    print("REPORT UNSAFE - equal elements found")
+                else: # if we get here, the elements are equal - thus unsafe
                     safe = False
                     return 0
                 
-
-
 def p1(given):
     safe,index = 0,0
     for x in given:
@@ -75,12 +61,10 @@ def p2(given):
         safe += ret
         if ret:
             continue
-        else:
+        else: # test every case for removal of each item in turn
             for z in range(0,len(x)):
                 copy = x.copy()
-                print("Testing removal of index: " + str(z))
                 del copy[z]
-                print("The copied array now looks like: " + str(copy))
                 ret = compare(copy)
                 safe += ret
                 if ret:
@@ -89,7 +73,7 @@ def p2(given):
 
 def main():
     given = process(input_file)       
-    #print("P1: " + p1(given))
+    print("P1: " + p1(given))
     print("P2: " + p2(given))
 
 if __name__ == '__main__':
