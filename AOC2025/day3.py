@@ -15,34 +15,24 @@ def p1(given, debug):
             print(string)
     DEBUG_PRINT = debug
 
-    digit1, digit2, number, total = 0, 0, 0, 0
+    digit1, digit2, total = 0, 0, 0
     indices = []
     for i in given:
-        # Figure out the max integer in the list, not inclusive of the final number
         digit1 = max(i[:-1])
 
-        # figure out all positions of the max digit in the list
         for index, char in enumerate(i):
             if char == digit1:
                 indices.append(index)
         
-        # If there's only one place where the largest number exists, find the largest number of the subset
         if len(indices) == 1:
             digit2 = max(i[indices[0]+1:])
-        # If the largest digit exists at the end, it must be the second digit
         elif max(i) == i[-1]:
             digit2 = i[-1]
-        # Otherwise the largest digit is duplicated and thus must be both the first and second digits
         else:
             digit2 = digit1
         
-        # Create the integer representation of the string and add it to the list
-        number = int(str(digit1) + str(digit2))
-        total += number
-
-            
+        total += int(str(digit1) + str(digit2))
         
-        # clear the list of indices after every line
         indices = []
         
 
