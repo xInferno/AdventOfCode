@@ -15,8 +15,11 @@ def p1(given, debug):
             print(string)
     DEBUG_PRINT = debug
 
+    # solution goes here
+
     return "TBD"
-def p2(given):
+
+def p2(given, debug):
     def debug_print(string):
         if DEBUG_PRINT:
             print(string)
@@ -25,9 +28,10 @@ def p2(given):
     return "TBD"
 
 def main():
+    debug1, debug2 = 1, 1
     given = process(input_file)       
-    print("P1: " + p1(given, debug))
-    print("P2: " + p2(given, debug))
+    print("P1: " + p1(given, debug1))
+    print("P2: " + p2(given, debug2))
 
 if __name__ == '__main__':
     main()
