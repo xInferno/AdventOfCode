@@ -53,16 +53,16 @@ def p2(given, debug):
 
         while len(num_string) < 12:
             j = i[beg:end]
-            digit1 = max(j)
-            indices_d1 = []
+            digit = max(j)
+            indices = []
             for index, char in enumerate(j):
-                if char == digit1:
-                    indices_d1.append(index)
-            num_string += str(j[indices_d1[0]])
+                if char == digit:
+                    indices.append(index)
+            num_string += str(j[indices[0]])
             prev_beg = beg
-            beg = indices_d1[0]+1 + prev_beg
+            beg = indices[0]+1 + prev_beg
             end += 1
-            indicies_d1 = []
+            indicies = []
 
         total += int(num_string)
 
